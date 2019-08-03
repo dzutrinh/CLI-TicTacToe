@@ -6,13 +6,15 @@
 CC=gcc
 CFLAGS=
 PROJECT=tic-tac-toe
+SOURCES=main.c screen.c
 
 all: $(PROJECT).exe
 
-$(PROJECT).exe: main.c
-	$(CC) $(CFLAGS) $< -o $(PROJECT).exe
+$(PROJECT).exe: $(SOURCES)
+	$(CC) $(CFLAGS) $(SOURCES) -o $(PROJECT).exe
 	strip $(PROJECT).exe
 
 clean:
-	del main.o
+	if exist main.o del main.o
+	if exist screen.o del screen.o
 	del $(PROJECT).exe
